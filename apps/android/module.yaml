@@ -1,0 +1,9 @@
+# Have feedback? Share it here https://surveys.jetbrains.com/s3/Amper-feedback-form
+
+product: android/app
+
+dependencies:
+  - ../../libs/shared
+
+settings:
+  compose: enabled
