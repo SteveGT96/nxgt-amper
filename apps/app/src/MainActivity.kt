@@ -1,25 +1,23 @@
 package com.strange
 
 import World
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
-import helpers.AppTheme
+import androidx.compose.ui.Modifier
+import ui.AppTheme
 
 class MainActivity : ComponentActivity() {
 
-
-    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AppTheme {
                 Scaffold {
-                    Column {
+                    Column(Modifier.padding(it)) {
                         ElevatedButton(onClick = {}) {
                             Text("Click Me")
                         }
