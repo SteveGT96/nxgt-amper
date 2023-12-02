@@ -2,17 +2,26 @@
 
 product:
   type: lib
-  platforms: [jvm, android]
+  platforms: [android]
+
+apply:
+  - ../../templates/common.module-template.yaml
 
 dependencies:
   - $compose.foundation: exported
   - $compose.material3: exported
+  - $compose.materialIconsExtended: exported
+  - io.insert-koin:koin-core:3.5.0: exported
 
 dependencies@android:
-  # Compose integration with Android activities
   - androidx.activity:activity-compose:1.7.2: exported
   - androidx.appcompat:appcompat:1.6.1: exported
+  - io.insert-koin:koin-android:3.5.0: exported
+  - com.google.accompanist:accompanist-systemuicontroller:0.32.0: exported
+
+test-dependencies:
+  - io.insert-koin:koin-test:3.5.0: exported
 
 settings:
-  compose:
-    enabled: true
+  android:
+    applicationId: com.strange

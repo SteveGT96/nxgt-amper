@@ -2,8 +2,6 @@
 
 product: android/app
 
-dependencies:
-  - ../../libs/shared
-
-settings:
-  compose: enabled
+apply:
+  - ../../templates/common.module-template.yaml
+  - ../../templates/app.module-template.yaml
