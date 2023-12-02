@@ -19,23 +19,7 @@ fun AppTheme(
 
     val systemUiController = rememberSystemUiController()
 
-    val color = MaterialTheme.colorScheme.background
-
-    SideEffect {
-        systemUiController.setNavigationBarColor(color, darkIcons = !useDarkTheme)
-        systemUiController.setStatusBarColor(color, darkIcons = !useDarkTheme)
-    }
-
     val context = LocalContext.current
-
-    val lightColorScheme = lightColorScheme(
-        primary = colorResource(R.color.purple_500),
-        secondary = colorResource(R.color.purple_200)
-    )
-    val darkColorScheme = darkColorScheme(
-        primary = colorResource(R.color.purple_500),
-        secondary = colorResource(R.color.purple_200)
-    )
 
     val dynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
@@ -49,6 +33,11 @@ fun AppTheme(
         dynamicColor && useDarkTheme -> dynamicDarkColorScheme(context)
         dynamicColor && !useDarkTheme -> dynamicLightColorScheme(context)
         else -> colors
+    }
+
+    SideEffect {
+        systemUiController.setNavigationBarColor(colorScheme.background, darkIcons = !useDarkTheme)
+        systemUiController.setStatusBarColor(colorScheme.background, darkIcons = !useDarkTheme)
     }
 
   MaterialTheme(

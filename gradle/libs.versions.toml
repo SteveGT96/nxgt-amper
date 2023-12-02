@@ -1,0 +1,31 @@
+[versions]
+ksp = "1.9.20-1.0.14"
+kotlin = "1.9.20"
+koin = "3.5.1"
+apollo = "3.8.2"
+room = "2.6.1"
+
+[libraries]
+activity-compose = { module = "androidx.activity:activity-compose", version = "1.7.2" }
+appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
+material3-window-size = { module = "androidx.compose.material3:material3-window-size-class", version = "1.1.2" }
+
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
+
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
+koin-androidx-workmanager = { module = "io.insert-koin:koin-androidx-workmanager" }
+koin-androidx-compose-navigation = { module = "io.insert-koin:koin-androidx-compose-navigation" }
+
+[bundles]
+koin = ["koin-bom", "koin-androidx-compose", "koin-androidx-workmanager", "koin-androidx-compose-navigation"]
+room = ["room-runtime", "room-ktx", "room-paging"]
+compose = ["activity-compose", "appcompat", "material3-window-size"]
+
+[plugins]
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
+
