@@ -3,3 +3,4 @@ test-dependencies:
 settings:
   kotlin:
     languageVersion: 1.9
+  compose: enabled

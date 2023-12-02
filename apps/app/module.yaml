@@ -5,3 +5,7 @@ product: android/app
 apply:
   - ../../templates/common.module-template.yaml
   - ../../templates/app.module-template.yaml
+
+settings:
+  android:
+    namespace: com.strange.app

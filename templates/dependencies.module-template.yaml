@@ -1,0 +1,12 @@
+dependencies:
+  - $compose.foundation: exported
+  - $compose.material3: exported
+  - $compose.materialIconsExtended: exported
+  - androidx.activity:activity-compose:1.7.2: exported
+  - androidx.appcompat:appcompat:1.6.1: exported
+  - androidx.compose.material3:material3-window-size-class:1.1.2: exported
+  - io.insert-koin:koin-bom:3.5.1: exported
+  - io.insert-koin:koin-androidx-compose: exported
+  - io.insert-koin:koin-androidx-workmanager: exported
+  - io.insert-koin:koin-androidx-compose-navigation: exported
+  - com.google.accompanist:accompanist-systemuicontroller:0.32.0: exported

@@ -1,3 +1,5 @@
-expect class World() {
-    fun get() : String
+class World {
+    fun get(): String {
+        return "Android World"
+    }
 }
