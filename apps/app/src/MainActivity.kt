@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
+import api.type.CreateUserInput
 import ui.AppTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
                         ElevatedButton(onClick = {}) {
                             Text("Click Me")
                         }
-                        Text("Hello, ${World().get()}!")
+                        Text("Hello, ${CreateUserInput("SteveGt96", "ss", "ss").username}!")
                     }
                 }
             }

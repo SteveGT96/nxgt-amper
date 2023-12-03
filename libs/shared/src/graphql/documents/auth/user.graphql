@@ -1,0 +1,86 @@
+query GetUserById($id: ID!) {
+    user(id: $id) {
+        id
+        username
+        email
+        avatar
+        groups {
+            ...Group
+        }
+        roles {
+            ...Role
+        }
+        permissions {
+            ...Permission
+        }
+    }
+}
+
+query GetUsers($first: Int, $last: Int, $before: String, $after: String) {
+    users(first: $first, last: $last, before: $before, after: $after) {
+        pageInfo {
+            ...PageInfo
+        }
+        edges {
+            cursor
+            node {
+                id
+                username
+                email
+                avatar
+                groups {
+                    ...Group
+                }
+                roles {
+                    ...Role
+                }
+                permissions {
+                    ...Permission
+                }
+            }
+        }
+    }
+}
+
+mutation CreateUser($input: CreateUserInput!) {
+    createUser(input: $input) {
+        id
+        username
+        email
+        avatar
+    }
+}
+
+mutation UpdateUser($input: UpdateUserInput!) {
+    updateUser(input: $input) {
+        id
+        username
+        email
+        avatar
+    }
+}
+
+mutation PatchUser($input: PatchUserInput!) {
+    patchUser(input: $input) {
+        id
+        username
+        email
+        avatar
+    }
+}
+
+mutation DeleteUser($id: ID!) {
+    deleteUser(id: $id)
+}
+
+subscription WatchUserChange {
+    onUserChange {
+        type
+        data {
+            id
+            username
+            email
+            avatar
+        }
+    }
+}
