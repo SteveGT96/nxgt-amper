@@ -31,11 +31,7 @@ apollo {
 tasks.register<Copy>("copyGeneratedCode") {
 	val destSrc = "$projectDir/src/generated"
 	dependsOn("generateApolloSources")
-	delete("$projectDir/src/generated")
+	delete(destSrc)
 	from(apolloSourceDir)
-	into("$projectDir/src/generated")
-}
-
-tasks.getByName("build") {
-	dependsOn("copyGeneratedCode")
+	into(destSrc)
 }

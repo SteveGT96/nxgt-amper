@@ -55,6 +55,14 @@ public class MutationBuilder(
 
   public var deleteUser: String by __fields
 
+  public var createUserAccount: UserMap by __fields
+
+  public var login: TokenMap by __fields
+
+  public var refreshToken: TokenMap by __fields
+
+  public var logout: String by __fields
+
   public fun build(): MutationMap = MutationMap(__fields)
 }
 

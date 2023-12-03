@@ -1,0 +1,21 @@
+mutation Login($input: LoginInput!) {
+  login(input: $input) {
+    issuedAt
+    expiration
+    access
+    refresh
+  }
+}
+
+mutation RefreshToken($token: String!) {
+  refreshToken(token: $token) {
+    issuedAt
+    expiration
+    access
+    refresh
+  }
+}
+
+mutation Logout {
+  logout
+}

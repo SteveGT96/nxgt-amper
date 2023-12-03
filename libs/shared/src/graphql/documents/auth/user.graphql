@@ -42,6 +42,15 @@ query GetUsers($first: Int, $last: Int, $before: String, $after: String) {
     }
 }
 
+mutation CreateAccount($input: CreateAccountInput!) {
+  createUserAccount(input: $input) {
+    id
+    username
+    email
+    avatar
+  }
+}
+
 mutation CreateUser($input: CreateUserInput!) {
     createUser(input: $input) {
         id

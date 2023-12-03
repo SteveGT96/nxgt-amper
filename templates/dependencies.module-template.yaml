@@ -1,6 +1,7 @@
 dependencies:
   - $compose.foundation: exported
   - $compose.material3: exported
+  - $compose.uiTooling: exported
   - $compose.materialIconsExtended: exported
   - androidx.paging:paging-compose:3.2.1: exported
   - io.coil-kt:coil-compose:2.5.0: exported
@@ -29,3 +30,4 @@ dependencies:
   - com.apollographql.apollo3:apollo-idling-resource:3.8.2: exported
   - com.apollographql.apollo3:apollo-http-cache:3.8.2: exported
   - com.apollographql.apollo3:apollo-normalized-cache-sqlite:3.8.2: exported
+  - io.github.serpro69:kotlin-faker:1.15.0: exported
