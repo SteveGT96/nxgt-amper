@@ -4,17 +4,29 @@ import androidx.compose.material3.windowsizeclass.*
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+object Breakpoints {
+
+	val sm = 640.dp
+
+	val md = 768.dp
+
+	val lg = 1024.dp
+
+	val xl = 1280.dp
+
+}
+
 val Dp.sm
-	get() = this >= 640.dp
+	get() = this >= Breakpoints.sm
 
 val Dp.md
-	get() = this  >= 768.dp
+	get() = this  >= Breakpoints.md
 
 val Dp.lg
-	get() = this >= 1024.dp
+	get() = this >= Breakpoints.lg
 
 val Dp.xl
-	get() = this >= 1280.dp
+	get() = this >= Breakpoints.xl
 
 val WindowSizeClass.wCompact: Boolean
 	get() = this.widthSizeClass == WindowWidthSizeClass.Compact

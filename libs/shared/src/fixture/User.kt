@@ -1,4 +1,4 @@
-package room.fixture
+package fixture
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import io.github.serpro69.kfaker.Faker
