@@ -4,12 +4,13 @@ dependencies:
   - $compose.uiTooling: exported
   - $compose.materialIconsExtended: exported
   - androidx.paging:paging-compose:3.2.1: exported
-  - io.coil-kt:coil-compose:2.5.0: exported
   - androidx.activity:activity-compose:1.7.2: exported
   - androidx.compose.material3:material3-window-size-class:1.1.2: exported
   - androidx.room:room-runtime:2.6.1: exported
   - androidx.room:room-ktx:2.6.1: exported
   - androidx.room:room-paging:2.6.1: exported
+  - com.github.jkuatdsc:form-builder:1.0.7: exported
+  - io.coil-kt:coil-compose:2.5.0: exported
   - io.insert-koin:koin-bom:3.5.1: exported
   - io.insert-koin:koin-androidx-compose: exported
   - io.insert-koin:koin-androidx-workmanager: exported

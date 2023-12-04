@@ -1,6 +1,5 @@
 package com.strange
 
-import World
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,9 +7,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import api.type.CreateUserInput
 import configs.initSizeClassConfig
 import ui.AppTheme
+import com.strange.shared.R
 
 class MainActivity : ComponentActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
                         ElevatedButton(onClick = {}) {
                             Text("Click Me")
                         }
-                        Text("Hello, ${CreateUserInput("SteveGt96", "ss", "ss").username}!")
+                        Text(stringResource(R.string.hello_world, CreateUserInput("SteveGt96", "ss", "ss").username))
                     }
                 }
             }

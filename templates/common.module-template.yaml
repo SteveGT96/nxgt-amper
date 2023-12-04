@@ -1,3 +1,6 @@
+repositories:
+  - id: jitpack
+    url: https://jitpack.io
 test-dependencies:
   - org.jetbrains.kotlin:kotlin-test:1.9.0
 settings:
