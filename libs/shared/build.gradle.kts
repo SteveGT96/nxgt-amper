@@ -1,17 +1,15 @@
-import com.android.build.gradle.LibraryExtension
-
 plugins {
 	alias(libs.plugins.ksp)
 	alias(libs.plugins.apollo)
 }
 
-dependencies {
-	kspAndroid(libs.room.compiler)
-	kspAndroid(libs.koin.ksp.compiler)
+ksp {
+	arg("room.generateKotlin", "true")
 }
 
-val sourceDir = "${projectDir}/build/generated/ksp/kotlin"
-val apolloSourceDir = "${projectDir}/build/generated/source/apollo/service"
+dependencies {
+	kspAndroid(libs.room.compiler)
+}
 
 apollo {
 	service("service") {
@@ -28,12 +26,17 @@ apollo {
 	}
 }
 
+val kspSourceDir = "${projectDir}/build/generated/ksp/android/androidRelease/kotlin"
+val apolloSourceDir = "${projectDir}/build/generated/source/apollo/service"
+
 tasks.register<Copy>("copyGeneratedCode") {
-	dependsOn("generateApolloSources")
+	dependsOn("generateApolloSources", "kspDebugKotlinAndroid", "kspReleaseKotlinAndroid")
 	val destSrc = "$projectDir/src/generated"
 	//delete(destSrc)
-	from(apolloSourceDir)
-	into(destSrc)
+	listOf(kspSourceDir, apolloSourceDir).forEach {
+		from(it)
+		into(destSrc)
+	}
 }
 
 tasks.getByName("assemble") {
