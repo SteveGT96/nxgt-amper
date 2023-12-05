@@ -1,8 +1,8 @@
 package helpers
 
 import androidx.compose.material3.windowsizeclass.*
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.ui.unit.*
 
 object Breakpoints {
 
@@ -45,3 +45,6 @@ val WindowSizeClass.wExpanded: Boolean
 
 val WindowSizeClass.hExpanded: Boolean
 	get() = this.heightSizeClass == WindowHeightSizeClass.Expanded
+
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+val LocalWindowSize = compositionLocalOf { WindowSizeClass.calculateFromSize(DpSize(640.dp, 1024.dp)) }

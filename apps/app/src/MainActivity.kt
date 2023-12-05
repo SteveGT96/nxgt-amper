@@ -9,7 +9,6 @@ import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import api.type.CreateUserInput
-import configs.initSizeClassConfig
 import ui.AppTheme
 import com.strange.shared.R
 
@@ -18,8 +17,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            initSizeClassConfig(this)
-            AppTheme {
+            AppTheme(this) {
                 Scaffold {
                     Column(Modifier.padding(it)) {
                         ElevatedButton(onClick = {}) {

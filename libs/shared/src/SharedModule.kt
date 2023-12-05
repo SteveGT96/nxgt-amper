@@ -7,7 +7,6 @@ import org.koin.dsl.module
 import room.SharedDatabase
 import room.repository.TokenRepository
 import services.AuthService
-import services.SizeClassService
 
 fun sharedModule(context: Context): Module {
 	return module {
@@ -17,6 +16,5 @@ fun sharedModule(context: Context): Module {
 		singleOf(::TokenRepository)
 		single { AuthService(get()) }
 		single { apolloClient(get()) }
-		singleOf(::SizeClassService)
 	}
 }

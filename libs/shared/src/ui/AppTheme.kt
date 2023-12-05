@@ -1,47 +1,50 @@
 package ui
 
+import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.strange.shared.R
 import helpers.*
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun AppTheme(
-  useDarkTheme: Boolean = isSystemInDarkTheme(),
-  content: @Composable() () -> Unit
+	activity: Activity, useDarkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit
 ) {
 
-    val systemUiController = rememberSystemUiController()
+	val systemUiController = rememberSystemUiController()
 
-    val context = LocalContext.current
+	val context = LocalContext.current
 
-    val dynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+	val dynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
-    val colors = if (!useDarkTheme) {
-        LightColors
-    } else {
-        DarkColors
-    }
+	val colors = if(!useDarkTheme) {
+		LightColors
+	} else {
+		DarkColors
+	}
 
-    val colorScheme = when {
-        dynamicColor && useDarkTheme -> dynamicDarkColorScheme(context)
-        dynamicColor && !useDarkTheme -> dynamicLightColorScheme(context)
-        else -> colors
-    }
+	val colorScheme = when {
+		dynamicColor && useDarkTheme -> dynamicDarkColorScheme(context)
+		dynamicColor && !useDarkTheme -> dynamicLightColorScheme(context)
+		else -> colors
+	}
 
-    SideEffect {
-        systemUiController.setNavigationBarColor(colorScheme.background, darkIcons = !useDarkTheme)
-        systemUiController.setStatusBarColor(colorScheme.background, darkIcons = !useDarkTheme)
-    }
+	val windowSizeClass = calculateWindowSizeClass(activity)
 
-  MaterialTheme(
-    colorScheme = colorScheme,
-    content = content
-  )
+	SideEffect {
+		systemUiController.setNavigationBarColor(colorScheme.background, darkIcons = !useDarkTheme)
+		systemUiController.setStatusBarColor(colorScheme.background, darkIcons = !useDarkTheme)
+	}
+
+	MaterialTheme(
+		colorScheme = colorScheme
+	) {
+		CompositionLocalProvider(LocalWindowSize provides windowSizeClass, content = content)
+	}
 }
