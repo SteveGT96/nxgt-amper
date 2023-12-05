@@ -1,0 +1,316 @@
+"""
+GraphQL graphql for a user
+"""
+type User {
+    """
+    The unique identifier of the user.
+    """
+    id: ID!
+
+    """
+    The user's username.
+    """
+    username: String!
+
+    """
+    The user's email address.
+    """
+    email: String!
+
+    """
+    The user's avatar image.
+    """
+    avatar: String
+
+    """
+    The groups associated with the user.
+    """
+    groups: [Group!]!
+
+    """
+    The roles associated with the user.
+    """
+    roles: [Role!]!
+
+    """
+    The permissions associated with the user.
+    """
+    permissions: [Permission!]!
+    """
+    The user audit metadata
+    """
+    metadata: AuditMetadata!
+}
+
+"""
+GraphQL graphql for a token
+"""
+type Token {
+
+    """
+    The access token, which can be used to authenticate requests to the API.
+    """
+    access: String!
+
+    """
+    The expiration date and time of the token.
+    """
+    expiration: DateTime!
+
+    """
+    The date and time at which the token was issued.
+    """
+    issuedAt: DateTime!
+
+    """
+    The refresh token, which can be used to obtain a new access token after the current access token has expired.
+    """
+    refresh: String!
+
+    """
+    The username of the user who owns the token.
+    """
+    username: String!
+}
+
+"""
+An event related to a user.
+"""
+type UserEvent {
+    """
+    The user data associated with the event.
+    """
+    data: User!
+
+    """
+    The type of event.
+    """
+    type: EventType!
+}
+
+"""
+Login input
+"""
+input LoginInput {
+    """
+    The user's username or email.
+    """
+    username: String!
+    """
+    The user's password.
+    """
+    password: String!
+}
+
+"""
+GraphQL graphql for create user input
+"""
+input CreateAccountInput {
+    """
+    The user's email address.
+    """
+    email: String!
+
+    """
+    The user's password.
+    """
+    password: String!
+
+    """
+    The user's username.
+    """
+    username: String!
+}
+
+"""
+GraphQL graphql for user creation
+"""
+input CreateUserInput {
+    """
+    The user's username.
+    """
+    username: String!
+
+    """
+    The user's password.
+    """
+    password: String!
+
+    """
+    The user's email address.
+    """
+    email: String!
+
+    """
+    The user's avatar image.
+    """
+    avatar: String
+
+    """
+    A set of groups that the user belongs to.
+    """
+    groups: [String!] = []
+
+    """
+    A set of roles that the user has.
+    """
+    roles: [String!] = []
+
+    """
+    A set of permissions that the user has.
+    """
+    permissions: [String!] = []
+}
+
+"""
+GraphQL graphql for user update
+"""
+input UpdateUserInput {
+    """
+    The unique identifier of the token.
+    """
+    id: String!
+
+    """
+    The user's username.
+    """
+    username: String!
+
+    """
+    The user's password.
+    """
+    password: String!
+
+    """
+    The user's email address.
+    """
+    email: String!
+
+    """
+    The user's avatar image.
+    """
+    avatar: String
+
+    """
+    A set of groups that the user belongs to.
+    """
+    groups: [String!] = []
+
+    """
+    A set of roles that the user has.
+    """
+    roles: [String!] = []
+
+    """
+    A set of permissions that the user has.
+    """
+    permissions: [String!] = []
+}
+
+"""
+GraphQL graphql for patching user input
+"""
+input PatchUserInput {
+    """
+    The unique identifier of the token.
+    """
+    id: String!
+
+    """
+    The user's username.
+    """
+    username: String
+
+    """
+    The user's password.
+    """
+    password: String
+
+    """
+    The user's email address.
+    """
+    email: String
+
+    """
+    The user's avatar image.
+    """
+    avatar: String
+
+    """
+    A set of groups that the user belongs to.
+    """
+    groups: [String!]
+
+    """
+    A set of roles that the user has.
+    """
+    roles: [String!]
+
+    """
+    A set of permissions that the user has.
+    """
+    permissions: [String!]
+}
+
+extend type Query {
+    """
+    Get all users.
+    """
+    users(first:Int, after:String, last:Int, before:String): UserConnection!
+
+    """
+    Get a user by ID.
+    """
+    user (id: ID!): User!
+
+    profile: User!
+}
+
+extend type Mutation {
+    """
+    Create a new user.
+    """
+    createUser(input: CreateUserInput!): User!
+
+    """
+    Update an existing user.
+    """
+    updateUser(input: UpdateUserInput!): User!
+
+    """
+    Patch an existing user.
+    """
+    patchUser(input: PatchUserInput!): User!
+
+    """
+    Delete an existing user.
+    """
+    deleteUser(id: ID!): String!
+
+    """
+    Creates a new user account and returns the user object.
+    """
+    createUserAccount(input: CreateAccountInput!): User!
+
+    """
+    Logs in a user and returns an authentication token.
+    """
+    login(input: LoginInput!): Token!
+
+    """
+    Refreshes an expired access token and returns a new access token.
+    """
+    refreshToken(token: String!): Token!
+
+    """
+    Logs out a user and invalidates their authentication token.
+    """
+    logout: String!
+}
+
+extend type Subscription {
+    """
+    Subscribe to user changes
+    """
+    onUserChange: UserEvent!
+}

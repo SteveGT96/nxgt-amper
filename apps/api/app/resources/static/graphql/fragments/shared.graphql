@@ -1,0 +1,13 @@
+fragment PageInfo on PageInfo {
+    startCursor
+    endCursor
+    hasPreviousPage
+    hasNextPage
+}
+
+fragment Metadata on AuditMetadata {
+    createdBy
+    lastModifiedBy
+    createdDate
+    lastModifiedDate
+}

@@ -1,0 +1,61 @@
+
+"""
+Long scalar
+"""
+scalar Long
+
+"""
+DateTime scalar
+"""
+scalar DateTime
+
+type Query {}
+
+type Mutation {}
+
+type Subscription {}
+
+"""
+Enum representing the occurred event type.
+"""
+enum EventType {
+    """
+    Indicates a new entity was created.
+    """
+    CREATE,
+
+    """
+    Indicates an existing entity was updated.
+    """
+    UPDATE,
+
+    """
+    Indicates a entity was deleted.
+    """
+    DELETE
+}
+
+"""
+Enum representing the entity audit metadata.
+"""
+type AuditMetadata {
+    """
+    User who created the object.
+    """
+    createdBy: String
+
+    """
+    User who last modified the object.
+    """
+    lastModifiedBy: String
+
+    """
+    Date and time the object was created.
+    """
+    createdDate: DateTime
+
+    """
+    Date and time the object was last modified.
+    """
+    lastModifiedDate: DateTime
+}

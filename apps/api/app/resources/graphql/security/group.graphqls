@@ -1,0 +1,180 @@
+"""
+Represents a group.
+"""
+type Group {
+    """
+    The unique identifier of the group.
+    """
+    id: ID
+
+    """
+    The name of the group.
+    """
+    name: String!
+
+    """
+    The description of the group.
+    """
+    description: String
+
+    """
+    The users associated with the group.
+    """
+    users: [User!]!
+
+    """
+    The roles associated with the group.
+    """
+    roles: [Role!]!
+
+    """
+    The permissions associated with the group.
+    """
+    permissions: [Permission!]!
+
+    """
+    The group audit metadata
+    """
+    metadata: AuditMetadata!
+}
+
+"""
+An event related to a group.
+"""
+type GroupEvent {
+    """
+    The group data associated with the event.
+    """
+    data: Group!
+
+    """
+    The type of event.
+    """
+    type: EventType!
+}
+
+"""
+Represents an input for creating a group.
+"""
+input CreateGroupInput {
+    """
+    The name of the group.
+    """
+    name: String!
+
+    """
+    The description of the group.
+    """
+    description: String
+
+    """
+    The unique identifiers of the associated roles.
+    """
+    roles: [String!]
+
+    """
+    The unique identifiers of the associated permissions.
+    """
+    permissions: [String!]
+}
+
+"""
+Represents an input for updating a group.
+"""
+input UpdateGroupInput {
+    """
+    The unique identifier of the group.
+    """
+    id: ID
+
+    """
+    The name of the group.
+    """
+    name: String!
+
+    """
+    The description of the group.
+    """
+    description: String
+
+    """
+    The unique identifiers of the associated roles.
+    """
+    roles: [String!]
+
+    """
+    The unique identifiers of the associated permissions.
+    """
+    permissions: [String!]
+}
+
+"""
+Represents an input for updating a group.
+"""
+input PatchGroupInput {
+    """
+    The unique identifier of the group.
+    """
+    id: ID
+
+    """
+    The new name of the group.
+    """
+    name: String
+
+    """
+    The new description of the group.
+    """
+    description: String
+
+    """
+    The new unique identifiers of the associated roles.
+    """
+    roles: [String!]
+
+    """
+    The new unique identifiers of the associated permissions.
+    """
+    permissions: [String!]
+}
+
+extend type Query {
+    """
+    Get all groups.
+    """
+    groups(first:Int, after:String, last:Int, before:String): GroupConnection!
+
+    """
+    Get a group by ID.
+    """
+    group (id: ID!): Group!
+}
+
+extend type Mutation {
+    """
+    Create a new group.
+    """
+    createGroup(input: CreateGroupInput!): Group!
+
+    """
+    Update an existing group.
+    """
+    updateGroup(input: UpdateGroupInput!): Group!
+
+    """
+    Patch an existing group.
+    """
+    patchGroup(input: PatchGroupInput!): Group!
+
+    """
+    Delete an existing group.
+    """
+    deleteGroup(id: ID!): String!
+}
+
+extend type Subscription {
+    """
+    Subscribe to group changes
+    """
+    onGroupChange: GroupEvent!
+}

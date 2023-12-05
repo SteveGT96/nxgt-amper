@@ -1,0 +1,26 @@
+dependencies:
+  - com.jakewharton.rxrelay3:rxrelay:3.0.1: exported
+  - net.pearx.kasechange:kasechange:1.4.1: exported
+  - redis.clients:jedis: exported
+  - org.springframework.boot:spring-boot-starter-data-mongodb: exported
+  - org.springframework.boot:spring-boot-starter-data-redis: exported
+  - org.springframework.boot:spring-boot-starter-security: exported
+  - org.springframework.boot:spring-boot-starter-oauth2-resource-server: exported
+  - org.springframework.boot:spring-boot-starter-web: exported
+  - org.springframework.boot:spring-boot-starter-graphql: exported
+  - org.springframework.boot:spring-boot-starter-websocket: exported
+  - org.springframework.boot:spring-boot-starter-mustache: exported
+  - org.springframework.boot:spring-boot-starter-validation: exported
+  - org.springframework.boot:spring-boot-starter-aop: exported
+  - com.fasterxml.jackson.module:jackson-module-kotlin: exported
+  - org.jetbrains.kotlin:kotlin-reflect: exported
+  - org.jetbrains.kotlinx:kotlinx-coroutines-core: exported
+  - org.jetbrains.kotlinx:kotlinx-coroutines-jdk8: exported
+  - org.jetbrains.kotlinx:kotlinx-coroutines-reactor: exported
+  - org.jetbrains.kotlinx:kotlinx-coroutines-reactive: exported
+  - org.springframework.boot:spring-boot-devtools: exported
+  #- org.springframework.boot:spring-boot-docker-compose: exported
+test-dependencies:
+  - org.springframework.boot:spring-boot-starter-test: exported
+  - org.springframework.security:spring-security-test: exported
+  - org.springframework.graphql:spring-graphql-test: exported

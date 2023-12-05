@@ -1,0 +1,86 @@
+query GetGroupById($id: ID!) {
+    group(id: $id) {
+        id
+        name
+        description
+        users {
+            ...User
+        }
+        roles {
+            ...Role
+        }
+        permissions {
+            ...Permission
+        }
+        metadata {
+            ...Metadata
+        }
+    }
+}
+
+query GetGroups($first: Int, $last: Int, $before: String, $after: String) {
+    groups(first: $first, last: $last, before: $before, after: $after) {
+        pageInfo {
+            ...PageInfo
+        }
+        edges {
+            cursor
+            node {
+                id
+                name
+                description
+                users {
+                    ...User
+                }
+                roles {
+                    ...Role
+                }
+                permissions {
+                    ...Permission
+                }
+                metadata {
+                    ...Metadata
+                }
+            }
+        }
+    }
+}
+
+mutation CreateGroup($input: CreateGroupInput!) {
+    createGroup(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation UpdateGroup($input: UpdateGroupInput!) {
+    updateGroup(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation PatchGroup($input: PatchGroupInput!) {
+    patchGroup(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation DeleteGroup($id: ID!) {
+    deleteGroup(id: $id)
+}
+
+subscription WatchGroupChange {
+    onGroupChange {
+        type
+        data {
+            id
+            name
+            description
+        }
+    }
+}

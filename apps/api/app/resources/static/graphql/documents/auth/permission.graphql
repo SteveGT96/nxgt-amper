@@ -1,0 +1,68 @@
+query GetPermissionById($id: ID!) {
+    permission(id: $id) {
+        id
+        name
+        description
+        metadata {
+            ...Metadata
+        }
+    }
+}
+
+query GetPermissions($first: Int, $last: Int, $before: String, $after: String) {
+    permissions(first: $first, last: $last, before: $before, after: $after) {
+        pageInfo {
+            ...PageInfo
+        }
+        edges {
+            cursor
+            node {
+                id
+                name
+                description
+                metadata {
+                    ...Metadata
+                }
+            }
+        }
+    }
+}
+
+mutation CreatePermission($input: CreatePermissionInput!) {
+    createPermission(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation UpdatePermission($input: UpdatePermissionInput!) {
+    updatePermission(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation PatchPermission($input: PatchPermissionInput!) {
+    patchPermission(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation DeletePermission($id: ID!) {
+    deletePermission(id: $id)
+}
+
+subscription WatchPermissionChange {
+    onPermissionChange {
+        type
+        data {
+            id
+            name
+            description
+        }
+    }
+}

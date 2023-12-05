@@ -1,0 +1,32 @@
+fragment Permission on Permission {
+    id
+    name
+    description
+}
+
+fragment Role on Role {
+    id
+    name
+    description
+}
+
+fragment Group on Group {
+    id
+    name
+    description
+}
+
+fragment User on User {
+    id
+    username
+    email
+    avatar
+}
+
+fragment Token on Token {
+    issuedAt
+    expiration
+    access
+    refresh
+    username
+}

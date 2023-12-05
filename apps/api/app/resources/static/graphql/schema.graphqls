@@ -1,0 +1,525 @@
+"""Indicates an Input Object is a OneOf Input Object."""
+directive @oneOf on INPUT_OBJECT
+
+"""GraphQL schema for create user input"""
+input CreateAccountInput {
+  """The user's email address."""
+  email: String!
+
+  """The user's password."""
+  password: String!
+
+  """The user's username."""
+  username: String!
+}
+
+"""Represents an input for creating a group."""
+input CreateGroupInput {
+  """The name of the group."""
+  name: String!
+
+  """The description of the group."""
+  description: String
+
+  """The unique identifiers of the associated roles."""
+  roles: [String!]
+
+  """The unique identifiers of the associated permissions."""
+  permissions: [String!]
+}
+
+"""Represents an input for creating a permission."""
+input CreatePermissionInput {
+  """The name of the permission."""
+  name: String!
+
+  """The description of the permission."""
+  description: String
+}
+
+"""Represents an input for creating a role."""
+input CreateRoleInput {
+  """The name of the role."""
+  name: String!
+
+  """The description of the role."""
+  description: String
+
+  """The unique identifiers of the associated permissions."""
+  permissions: [String!]
+}
+
+"""GraphQL schema for user creation"""
+input CreateUserInput {
+  """The user's username."""
+  username: String!
+
+  """The user's password."""
+  password: String!
+
+  """The user's email address."""
+  email: String!
+
+  """The user's avatar image."""
+  avatar: String
+
+  """A set of groups that the user belongs to."""
+  groups: [String!] = []
+
+  """A set of roles that the user has."""
+  roles: [String!] = []
+
+  """A set of permissions that the user has."""
+  permissions: [String!] = []
+}
+
+"""DateTime scalar"""
+scalar DateTime
+
+"""Enum representing thr occurred event type."""
+enum EventType {
+  """Indicates a new entity was created."""
+  CREATE
+
+  """Indicates an existing entity was updated."""
+  UPDATE
+
+  """Indicates a entity was deleted."""
+  DELETE
+}
+
+"""Represents a group."""
+type Group {
+  """The unique identifier of the group."""
+  id: ID
+
+  """The name of the group."""
+  name: String!
+
+  """The description of the group."""
+  description: String
+
+  """The users associated with the group."""
+  users: [User!]!
+
+  """The roles associated with the group."""
+  roles: [Role!]!
+
+  """The permissions associated with the group."""
+  permissions: [Permission!]!
+}
+
+type GroupConnection {
+  edges: [GroupEdge]!
+  pageInfo: PageInfo!
+}
+
+type GroupEdge {
+  cursor: String!
+  node: Group!
+}
+
+"""An event related to a group."""
+type GroupEvent {
+  """The group data associated with the event."""
+  data: Group!
+
+  """The type of event."""
+  type: EventType!
+}
+
+"""Login input"""
+input LoginInput {
+  """The user's username or email."""
+  username: String!
+
+  """The user's password."""
+  password: String!
+}
+
+"""Long scalar"""
+scalar Long
+
+type Mutation {
+  """Create a new group."""
+  createGroup(input: CreateGroupInput!): Group!
+
+  """Update an existing group."""
+  updateGroup(input: UpdateGroupInput!): Group!
+
+  """Patch an existing group."""
+  patchGroup(input: PatchGroupInput!): Group!
+
+  """Delete an existing group."""
+  deleteGroup(id: ID!): String!
+
+  """Create a new permission."""
+  createPermission(input: CreatePermissionInput!): Permission!
+
+  """Update an existing permission."""
+  updatePermission(input: UpdatePermissionInput!): Permission!
+
+  """Patch an existing permission."""
+  patchPermission(input: PatchPermissionInput!): Permission!
+
+  """Delete an existing permission."""
+  deletePermission(id: ID!): String!
+
+  """Create a new role."""
+  createRole(input: CreateRoleInput!): Role!
+
+  """Update an existing role."""
+  updateRole(input: UpdateRoleInput!): Role!
+
+  """Patch an existing role."""
+  patchRole(input: PatchRoleInput!): Role!
+
+  """Delete an existing role."""
+  deleteRole(id: ID!): String!
+
+  """Create a new user."""
+  createUser(input: CreateUserInput!): User!
+
+  """Update an existing user."""
+  updateUser(input: UpdateUserInput!): User!
+
+  """Patch an existing user."""
+  patchUser(input: PatchUserInput!): User!
+
+  """Delete an existing user."""
+  deleteUser(id: ID!): String!
+
+  """Creates a new user account and returns the user object."""
+  createUserAccount(input: CreateAccountInput!): User!
+
+  """Logs in a user and returns an authentication token."""
+  login(input: LoginInput!): Token!
+
+  """Refreshes an expired access token and returns a new access token."""
+  refreshToken(token: String!): Token!
+
+  """Logs out a user and invalidates their authentication token."""
+  logout: String!
+}
+
+type PageInfo {
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+"""Represents an input for updating a group."""
+input PatchGroupInput {
+  """The unique identifier of the group."""
+  id: ID
+
+  """The new name of the group."""
+  name: String
+
+  """The new description of the group."""
+  description: String
+
+  """The new unique identifiers of the associated roles."""
+  roles: [String!]
+
+  """The new unique identifiers of the associated permissions."""
+  permissions: [String!]
+}
+
+"""Represents an input for updating a permission."""
+input PatchPermissionInput {
+  """The unique identifier of the permission."""
+  id: ID
+
+  """The new name of the permission."""
+  name: String
+
+  """The new description of the permission."""
+  description: String
+}
+
+"""Represents an input for updating a role."""
+input PatchRoleInput {
+  """The unique identifier of the role."""
+  id: ID
+
+  """The new name of the role."""
+  name: String
+
+  """The new description of the role."""
+  description: String
+
+  """The new unique identifiers of the associated permissions."""
+  permissions: [String!]
+}
+
+"""GraphQL schema for patching user input"""
+input PatchUserInput {
+  """The unique identifier of the token."""
+  id: String!
+
+  """The user's username."""
+  username: String
+
+  """The user's password."""
+  password: String
+
+  """The user's email address."""
+  email: String
+
+  """The user's avatar image."""
+  avatar: String
+
+  """A set of groups that the user belongs to."""
+  groups: [String!]
+
+  """A set of roles that the user has."""
+  roles: [String!]
+
+  """A set of permissions that the user has."""
+  permissions: [String!]
+}
+
+"""Represents a permission."""
+type Permission {
+  """The unique identifier of the permission."""
+  id: ID
+
+  """The name of the permission."""
+  name: String!
+
+  """The description of the permission."""
+  description: String
+}
+
+type PermissionConnection {
+  edges: [PermissionEdge]!
+  pageInfo: PageInfo!
+}
+
+type PermissionEdge {
+  cursor: String!
+  node: Permission!
+}
+
+"""An event related to a permission."""
+type PermissionEvent {
+  """The permission data associated with the event."""
+  data: Permission!
+
+  """The type of event."""
+  type: EventType!
+}
+
+type Query {
+  """Get all groups."""
+  groups(first: Int, after: String, last: Int, before: String): GroupConnection!
+
+  """Get a group by ID."""
+  group(id: ID!): Group!
+
+  """Get all permissions."""
+  permissions(first: Int, after: String, last: Int, before: String): PermissionConnection!
+
+  """Get a permission by ID."""
+  permission(id: ID!): Permission!
+
+  """Get all roles."""
+  roles(first: Int, after: String, last: Int, before: String): RoleConnection!
+
+  """Get a role by ID."""
+  role(id: ID!): Role!
+
+  """Get all users."""
+  users(first: Int, after: String, last: Int, before: String): UserConnection!
+
+  """Get a user by ID."""
+  user(id: ID!): User!
+  profile: User!
+}
+
+"""Represents a role."""
+type Role {
+  """The unique identifier of the role."""
+  id: ID
+
+  """The name of the role."""
+  name: String!
+
+  """The description of the role."""
+  description: String
+
+  """The permissions associated with the role."""
+  permissions: [Permission!]!
+}
+
+type RoleConnection {
+  edges: [RoleEdge]!
+  pageInfo: PageInfo!
+}
+
+type RoleEdge {
+  cursor: String!
+  node: Role!
+}
+
+"""An event related to a role."""
+type RoleEvent {
+  """The role data associated with the event."""
+  data: Role!
+
+  """The type of event."""
+  type: EventType!
+}
+
+type Subscription {
+  """Subscribe to group changes"""
+  onGroupChange: GroupEvent!
+
+  """Subscribe to permission changes"""
+  onPermissionChange: PermissionEvent!
+
+  """Subscribe to role changes"""
+  onRoleChange: RoleEvent!
+
+  """Subscribe to user changes"""
+  onUserChange: UserEvent!
+}
+
+"""GraphQL schema for a token"""
+type Token {
+  """
+  The access token, which can be used to authenticate requests to the API.
+  """
+  access: String!
+
+  """The expiration date and time of the token."""
+  expiration: DateTime!
+
+  """The date and time at which the token was issued."""
+  issuedAt: DateTime!
+
+  """
+  The refresh token, which can be used to obtain a new access token after the current access token has expired.
+  """
+  refresh: String!
+
+  """The username of the user who owns the token."""
+  username: String!
+}
+
+"""Represents an input for updating a group."""
+input UpdateGroupInput {
+  """The unique identifier of the group."""
+  id: ID
+
+  """The name of the group."""
+  name: String!
+
+  """The description of the group."""
+  description: String
+
+  """The unique identifiers of the associated roles."""
+  roles: [String!]
+
+  """The unique identifiers of the associated permissions."""
+  permissions: [String!]
+}
+
+"""Represents an input for updating a permission."""
+input UpdatePermissionInput {
+  """The unique identifier of the permission."""
+  id: ID
+
+  """The name of the permission."""
+  name: String!
+
+  """The description of the permission."""
+  description: String
+}
+
+"""Represents an input for updating a role."""
+input UpdateRoleInput {
+  """The unique identifier of the role."""
+  id: ID
+
+  """The name of the role."""
+  name: String!
+
+  """The description of the role."""
+  description: String
+
+  """The unique identifiers of the associated permissions."""
+  permissions: [String!]
+}
+
+"""GraphQL schema for user update"""
+input UpdateUserInput {
+  """The unique identifier of the token."""
+  id: String!
+
+  """The user's username."""
+  username: String!
+
+  """The user's password."""
+  password: String!
+
+  """The user's email address."""
+  email: String!
+
+  """The user's avatar image."""
+  avatar: String
+
+  """A set of groups that the user belongs to."""
+  groups: [String!] = []
+
+  """A set of roles that the user has."""
+  roles: [String!] = []
+
+  """A set of permissions that the user has."""
+  permissions: [String!] = []
+}
+
+"""GraphQL schema for a user"""
+type User {
+  """The unique identifier of the user."""
+  id: ID!
+
+  """The user's username."""
+  username: String!
+
+  """The user's email address."""
+  email: String!
+
+  """The user's avatar image."""
+  avatar: String
+
+  """The groups associated with the user."""
+  groups: [Group!]!
+
+  """The roles associated with the user."""
+  roles: [Role!]!
+
+  """The permissions associated with the user."""
+  permissions: [Permission!]!
+}
+
+type UserConnection {
+  edges: [UserEdge]!
+  pageInfo: PageInfo!
+}
+
+type UserEdge {
+  cursor: String!
+  node: User!
+}
+
+"""An event related to a user."""
+type UserEvent {
+  """The user data associated with the event."""
+  data: User!
+
+  """The type of event."""
+  type: EventType!
+}

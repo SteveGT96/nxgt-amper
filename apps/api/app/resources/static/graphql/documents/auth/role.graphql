@@ -1,0 +1,74 @@
+query GetRoleById($id: ID!) {
+    role(id: $id) {
+        id
+        name
+        description
+        permissions {
+            ...Permission
+        }
+        metadata {
+            ...Metadata
+        }
+    }
+}
+
+query GetRoles($first: Int, $last: Int, $before: String, $after: String) {
+    roles(first: $first, last: $last, before: $before, after: $after) {
+        pageInfo {
+            ...PageInfo
+        }
+        edges {
+            cursor
+            node {
+                id
+                name
+                description
+                permissions {
+                    ...Permission
+                }
+                metadata {
+                    ...Metadata
+                }
+            }
+        }
+    }
+}
+
+mutation CreateRole($input: CreateRoleInput!) {
+    createRole(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation UpdateRole($input: UpdateRoleInput!) {
+    updateRole(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation PatchRole($input: PatchRoleInput!) {
+    patchRole(input: $input) {
+        id
+        name
+        description
+    }
+}
+
+mutation DeleteRole($id: ID!) {
+    deleteRole(id: $id)
+}
+
+subscription WatchRoleChange {
+    onRoleChange {
+        type
+        data {
+            id
+            name
+            description
+        }
+    }
+}

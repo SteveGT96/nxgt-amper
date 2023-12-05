@@ -1,0 +1,154 @@
+"""
+Represents a role.
+"""
+type Role {
+    """
+    The unique identifier of the role.
+    """
+    id: ID
+
+    """
+    The name of the role.
+    """
+    name: String!
+
+    """
+    The description of the role.
+    """
+    description: String
+
+    """
+    The permissions associated with the role.
+    """
+    permissions: [Permission!]!
+    """
+    The role audit metadata
+    """
+    metadata: AuditMetadata!
+}
+
+"""
+An event related to a role.
+"""
+type RoleEvent {
+    """
+    The role data associated with the event.
+    """
+    data: Role!
+
+    """
+    The type of event.
+    """
+    type: EventType!
+}
+
+"""
+Represents an input for creating a role.
+"""
+input CreateRoleInput {
+    """
+    The name of the role.
+    """
+    name: String!
+
+    """
+    The description of the role.
+    """
+    description: String
+
+    """
+    The unique identifiers of the associated permissions.
+    """
+    permissions: [String!]
+}
+
+"""
+Represents an input for updating a role.
+"""
+input UpdateRoleInput {
+    """
+    The unique identifier of the role.
+    """
+    id: ID
+
+    """
+    The name of the role.
+    """
+    name: String!
+
+    """
+    The description of the role.
+    """
+    description: String
+
+    """
+    The unique identifiers of the associated permissions.
+    """
+    permissions: [String!]
+}
+
+"""
+Represents an input for updating a role.
+"""
+input PatchRoleInput {
+    """
+    The unique identifier of the role.
+    """
+    id: ID
+
+    """
+    The new name of the role.
+    """
+    name: String
+
+    """
+    The new description of the role.
+    """
+    description: String
+
+    """
+    The new unique identifiers of the associated permissions.
+    """
+    permissions: [String!]
+}
+
+extend type Query {
+    """
+    Get all roles.
+    """
+    roles(first:Int, after:String, last:Int, before:String): RoleConnection!
+
+    """
+    Get a role by ID.
+    """
+    role (id: ID!): Role!
+}
+
+extend type Mutation {
+    """
+    Create a new role.
+    """
+    createRole(input: CreateRoleInput!): Role!
+
+    """
+    Update an existing role.
+    """
+    updateRole(input: UpdateRoleInput!): Role!
+
+    """
+    Patch an existing role.
+    """
+    patchRole(input: PatchRoleInput!): Role!
+
+    """
+    Delete an existing role.
+    """
+    deleteRole(id: ID!): String!
+}
+
+extend type Subscription {
+    """
+    Subscribe to role changes
+    """
+    onRoleChange: RoleEvent!
+}

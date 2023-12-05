@@ -1,0 +1,134 @@
+"""
+Represents a permission.
+"""
+type Permission {
+    """
+    The unique identifier of the permission.
+    """
+    id: ID
+
+    """
+    The name of the permission.
+    """
+    name: String!
+
+    """
+    The description of the permission.
+    """
+    description: String
+    """
+    The permission audit metadata
+    """
+    metadata: AuditMetadata!
+}
+
+"""
+An event related to a permission.
+"""
+type PermissionEvent {
+    """
+    The permission data associated with the event.
+    """
+    data: Permission!
+
+    """
+    The type of event.
+    """
+    type: EventType!
+}
+
+"""
+Represents an input for creating a permission.
+"""
+input CreatePermissionInput {
+    """
+    The name of the permission.
+    """
+    name: String!
+
+    """
+    The description of the permission.
+    """
+    description: String
+}
+
+"""
+Represents an input for updating a permission.
+"""
+input UpdatePermissionInput {
+    """
+    The unique identifier of the permission.
+    """
+    id: ID
+
+    """
+    The name of the permission.
+    """
+    name: String!
+
+    """
+    The description of the permission.
+    """
+    description: String
+}
+
+"""
+Represents an input for updating a permission.
+"""
+input PatchPermissionInput {
+    """
+    The unique identifier of the permission.
+    """
+    id: ID
+
+    """
+    The new name of the permission.
+    """
+    name: String
+
+    """
+    The new description of the permission.
+    """
+    description: String
+}
+
+extend type Query {
+    """
+    Get all permissions.
+    """
+    permissions(first:Int, after:String, last:Int, before:String): PermissionConnection!
+
+    """
+    Get a permission by ID.
+    """
+    permission (id: ID!): Permission!
+}
+
+extend type Mutation {
+    """
+    Create a new permission.
+    """
+    createPermission(input: CreatePermissionInput!): Permission!
+
+    """
+    Update an existing permission.
+    """
+    updatePermission(input: UpdatePermissionInput!): Permission!
+
+    """
+    Patch an existing permission.
+    """
+    patchPermission(input: PatchPermissionInput!): Permission!
+
+    """
+    Delete an existing permission.
+    """
+    deletePermission(id: ID!): String!
+}
+
+extend type Subscription {
+    """
+    Subscribe to permission changes
+    """
+    onPermissionChange: PermissionEvent!
+}
