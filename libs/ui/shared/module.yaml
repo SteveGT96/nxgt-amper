@@ -5,8 +5,8 @@ product:
   platforms: [android]
 
 apply:
-  - ../../templates/common.module-template.yaml
-  - ../../templates/dependencies.module-template.yaml
+  - ../../../templates/ui/common.module-template.yaml
+  - ../../../templates/ui/dependencies.module-template.yaml
 
 settings:
   android:

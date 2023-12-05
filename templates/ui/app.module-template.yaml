@@ -1,5 +1,5 @@
 dependencies:
-  - ../libs/shared
+  - ../../libs/ui/shared
 
 settings:
   compose: enabled
