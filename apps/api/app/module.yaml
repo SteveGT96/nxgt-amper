@@ -8,4 +8,4 @@ apply:
 
 settings:
   jvm:
-    mainClass: com.strange.NxgtServerApplicationKt
+    mainClass: auth.NxgtServerApplicationKt

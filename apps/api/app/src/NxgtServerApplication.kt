@@ -1,9 +1,9 @@
-package com.strange
+package auth
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["shared", "auth"])
 class NxgtServerApplication
 
 fun main(args: Array<String>) {
