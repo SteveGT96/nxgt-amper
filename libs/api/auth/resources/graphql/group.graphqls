@@ -68,6 +68,11 @@ input CreateGroupInput {
     description: String
 
     """
+    The unique identifiers of the associated users.
+    """
+    users: [String!]
+
+    """
     The unique identifiers of the associated roles.
     """
     roles: [String!]
@@ -98,6 +103,11 @@ input UpdateGroupInput {
     description: String
 
     """
+    The unique identifiers of the associated users.
+    """
+    users: [String!]
+
+    """
     The unique identifiers of the associated roles.
     """
     roles: [String!]
@@ -126,6 +136,11 @@ input PatchGroupInput {
     The new description of the group.
     """
     description: String
+
+    """
+    The unique identifiers of the associated users.
+    """
+    users: [String!]
 
     """
     The unique identifiers of the associated roles.
