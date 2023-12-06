@@ -3,7 +3,7 @@
 product: jvm/app
 
 dependencies:
-  - ../../../libs/api/auth
+  - ../../../libs/api/auth: exported
 
 settings:
   jvm:

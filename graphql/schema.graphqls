@@ -1,7 +1,22 @@
 """Indicates an Input Object is a OneOf Input Object."""
 directive @oneOf on INPUT_OBJECT
 
-"""GraphQL schema for create user input"""
+"""Enum representing the entity audit metadata."""
+type AuditMetadata {
+  """User who created the object."""
+  createdBy: String
+
+  """User who last modified the object."""
+  lastModifiedBy: String
+
+  """Date and time the object was created."""
+  createdDate: DateTime
+
+  """Date and time the object was last modified."""
+  lastModifiedDate: DateTime
+}
+
+"""GraphQL graphql for create user input"""
 input CreateAccountInput {
   """The user's email address."""
   email: String!
@@ -49,7 +64,7 @@ input CreateRoleInput {
   permissions: [String!]
 }
 
-"""GraphQL schema for user creation"""
+"""GraphQL graphql for user creation"""
 input CreateUserInput {
   """The user's username."""
   username: String!
@@ -76,7 +91,40 @@ input CreateUserInput {
 """DateTime scalar"""
 scalar DateTime
 
-"""Enum representing thr occurred event type."""
+"""Enum representing error types"""
+enum ErrorType {
+  """
+  DataFetcher cannot or will not fetch the data value due to
+  something that is perceived to be a client error.
+  """
+  BAD_REQUEST
+
+  """
+  DataFetcher did not fetch the data value due to a lack of
+  valid authentication credentials.
+  """
+  UNAUTHORIZED
+
+  """
+  DataFetcher refuses to authorize the fetching of the data
+  value.
+  """
+  FORBIDDEN
+
+  """
+  DataFetcher did not find a data value or is not willing to
+  disclose that one exists.
+  """
+  NOT_FOUND
+
+  """
+  DataFetcher encountered an unexpected condition that
+  prevented it from fetching the data value.
+  """
+  INTERNAL_ERROR
+}
+
+"""Enum representing the occurred event type."""
 enum EventType {
   """Indicates a new entity was created."""
   CREATE
@@ -107,6 +155,9 @@ type Group {
 
   """The permissions associated with the group."""
   permissions: [Permission!]!
+
+  """The group audit metadata"""
+  metadata: AuditMetadata!
 }
 
 type GroupConnection {
@@ -254,7 +305,7 @@ input PatchRoleInput {
   permissions: [String!]
 }
 
-"""GraphQL schema for patching user input"""
+"""GraphQL graphql for patching user input"""
 input PatchUserInput {
   """The unique identifier of the token."""
   id: String!
@@ -291,6 +342,9 @@ type Permission {
 
   """The description of the permission."""
   description: String
+
+  """The permission audit metadata"""
+  metadata: AuditMetadata!
 }
 
 type PermissionConnection {
@@ -352,6 +406,9 @@ type Role {
 
   """The permissions associated with the role."""
   permissions: [Permission!]!
+
+  """The role audit metadata"""
+  metadata: AuditMetadata!
 }
 
 type RoleConnection {
@@ -387,7 +444,7 @@ type Subscription {
   onUserChange: UserEvent!
 }
 
-"""GraphQL schema for a token"""
+"""GraphQL graphql for a token"""
 type Token {
   """
   The access token, which can be used to authenticate requests to the API.
@@ -454,7 +511,7 @@ input UpdateRoleInput {
   permissions: [String!]
 }
 
-"""GraphQL schema for user update"""
+"""GraphQL graphql for user update"""
 input UpdateUserInput {
   """The unique identifier of the token."""
   id: String!
@@ -481,7 +538,7 @@ input UpdateUserInput {
   permissions: [String!] = []
 }
 
-"""GraphQL schema for a user"""
+"""GraphQL graphql for a user"""
 type User {
   """The unique identifier of the user."""
   id: ID!
@@ -503,6 +560,9 @@ type User {
 
   """The permissions associated with the user."""
   permissions: [Permission!]!
+
+  """The user audit metadata"""
+  metadata: AuditMetadata!
 }
 
 type UserConnection {

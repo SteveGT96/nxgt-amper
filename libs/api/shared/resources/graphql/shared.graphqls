@@ -59,3 +59,38 @@ type AuditMetadata {
     """
     lastModifiedDate: DateTime
 }
+
+"""
+Enum representing error types
+"""
+enum ErrorType {
+    """
+    DataFetcher cannot or will not fetch the data value due to
+    something that is perceived to be a client error.
+    """
+    BAD_REQUEST
+
+    """
+    DataFetcher did not fetch the data value due to a lack of
+    valid authentication credentials.
+    """
+    UNAUTHORIZED
+
+    """
+    DataFetcher refuses to authorize the fetching of the data
+    value.
+    """
+    FORBIDDEN
+
+    """
+    DataFetcher did not find a data value or is not willing to
+    disclose that one exists.
+    """
+    NOT_FOUND
+
+    """
+    DataFetcher encountered an unexpected condition that
+    prevented it from fetching the data value.
+    """
+    INTERNAL_ERROR
+}
