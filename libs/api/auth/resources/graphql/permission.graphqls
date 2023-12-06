@@ -5,7 +5,7 @@ type Permission {
     """
     The unique identifier of the permission.
     """
-    id: ID
+    id: ID!
 
     """
     The name of the permission.
@@ -59,7 +59,7 @@ input UpdatePermissionInput {
     """
     The unique identifier of the permission.
     """
-    id: ID
+    id: ID!
 
     """
     The name of the permission.
@@ -79,7 +79,7 @@ input PatchPermissionInput {
     """
     The unique identifier of the permission.
     """
-    id: ID
+    id: ID!
 
     """
     The new name of the permission.

@@ -5,7 +5,7 @@ type Group {
     """
     The unique identifier of the group.
     """
-    id: ID
+    id: ID!
 
     """
     The name of the group.
@@ -90,7 +90,7 @@ input UpdateGroupInput {
     """
     The unique identifier of the group.
     """
-    id: ID
+    id: ID!
 
     """
     The name of the group.
@@ -125,7 +125,7 @@ input PatchGroupInput {
     """
     The unique identifier of the group.
     """
-    id: ID
+    id: ID!
 
     """
     The new name of the group.
