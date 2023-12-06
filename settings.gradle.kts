@@ -3,7 +3,6 @@ pluginManagement {
         mavenCentral()
         google()
         gradlePluginPortal()
-        maven("https://jitpack.io")
         maven("https://maven.pkg.jetbrains.space/public/p/amper/amper")
     }
 }

@@ -2,9 +2,8 @@
 
 product: jvm/app
 
-apply:
-  - ../../../templates/api/common.module-template.yaml
-  - ../../../templates/api/app.module-template.yaml
+dependencies:
+  - ../../../libs/api/auth
 
 settings:
   jvm:
