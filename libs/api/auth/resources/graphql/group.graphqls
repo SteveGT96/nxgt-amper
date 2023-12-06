@@ -128,12 +128,12 @@ input PatchGroupInput {
     description: String
 
     """
-    The new unique identifiers of the associated roles.
+    The unique identifiers of the associated roles.
     """
     roles: [String!]
 
     """
-    The new unique identifiers of the associated permissions.
+    The unique identifiers of the associated permissions.
     """
     permissions: [String!]
 }

@@ -107,7 +107,7 @@ input PatchRoleInput {
     description: String
 
     """
-    The new unique identifiers of the associated permissions.
+    The unique identifiers of the associated permissions.
     """
     permissions: [String!]
 }
