@@ -142,7 +142,7 @@ enum EventType {
 """Represents a group."""
 type Group {
   """The unique identifier of the group."""
-  id: ID
+  id: ID!
 
   """The name of the group."""
   name: String!
@@ -266,7 +266,7 @@ type PageInfo {
 """Represents an input for updating a group."""
 input PatchGroupInput {
   """The unique identifier of the group."""
-  id: ID
+  id: ID!
 
   """The new name of the group."""
   name: String
@@ -287,7 +287,7 @@ input PatchGroupInput {
 """Represents an input for updating a permission."""
 input PatchPermissionInput {
   """The unique identifier of the permission."""
-  id: ID
+  id: ID!
 
   """The new name of the permission."""
   name: String
@@ -299,7 +299,7 @@ input PatchPermissionInput {
 """Represents an input for updating a role."""
 input PatchRoleInput {
   """The unique identifier of the role."""
-  id: ID
+  id: ID!
 
   """The new name of the role."""
   name: String
@@ -341,7 +341,7 @@ input PatchUserInput {
 """Represents a permission."""
 type Permission {
   """The unique identifier of the permission."""
-  id: ID
+  id: ID!
 
   """The name of the permission."""
   name: String!
@@ -402,7 +402,7 @@ type Query {
 """Represents a role."""
 type Role {
   """The unique identifier of the role."""
-  id: ID
+  id: ID!
 
   """The name of the role."""
   name: String!
@@ -475,7 +475,7 @@ type Token {
 """Represents an input for updating a group."""
 input UpdateGroupInput {
   """The unique identifier of the group."""
-  id: ID
+  id: ID!
 
   """The name of the group."""
   name: String!
@@ -496,7 +496,7 @@ input UpdateGroupInput {
 """Represents an input for updating a permission."""
 input UpdatePermissionInput {
   """The unique identifier of the permission."""
-  id: ID
+  id: ID!
 
   """The name of the permission."""
   name: String!
@@ -508,7 +508,7 @@ input UpdatePermissionInput {
 """Represents an input for updating a role."""
 input UpdateRoleInput {
   """The unique identifier of the role."""
-  id: ID
+  id: ID!
 
   """The name of the role."""
   name: String!
