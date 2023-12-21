@@ -1,9 +1,9 @@
 package auth.services
 
-import auth.dto.*
+import auth.dtos.*
 import auth.interfaces.IPermissionService
 import auth.mappers.PermissionMapper
-import auth.models.Permission
+import auth.entities.Permission
 import auth.repositories.PermissionRepository
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.data.mongodb.core.MongoTemplate

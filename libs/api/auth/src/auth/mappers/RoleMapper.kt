@@ -1,8 +1,8 @@
 package auth.mappers
 
-import auth.dto.*
-import auth.models.Permission
-import auth.models.Role
+import auth.dtos.*
+import auth.entities.Permission
+import auth.entities.Role
 import shared.exceptions.CustomException
 import shared.helpers.findByKeyIn
 import shared.helpers.patch

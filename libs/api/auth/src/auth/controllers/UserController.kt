@@ -1,9 +1,9 @@
 package auth.controllers
 
-import auth.dto.*
+import auth.dtos.*
 import auth.helpers.*
 import auth.interfaces.IUserService
-import auth.models.*
+import auth.entities.*
 import shared.types.Event
 import shared.types.EventType
 import graphql.relay.Connection

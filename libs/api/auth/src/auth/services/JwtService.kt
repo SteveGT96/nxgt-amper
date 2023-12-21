@@ -1,8 +1,8 @@
 package auth.services
 
 import auth.helpers.*
-import auth.models.Token
-import auth.models.User
+import auth.entities.Token
+import auth.entities.User
 import shared.exceptions.CustomException
 import shared.i18n.Messages
 import jakarta.servlet.http.HttpServletRequest

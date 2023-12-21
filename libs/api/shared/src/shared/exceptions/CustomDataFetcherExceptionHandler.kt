@@ -1,8 +1,5 @@
 package shared.exceptions
 
-import shared.config.translate
-import shared.helpers.Regexp
-import shared.i18n.Messages
 import graphql.GraphQLError
 import graphql.execution.*
 import jakarta.validation.ConstraintViolationException
@@ -10,8 +7,29 @@ import org.springframework.context.MessageSource
 import org.springframework.dao.DuplicateKeyException
 import org.springframework.dao.OptimisticLockingFailureException
 import org.springframework.graphql.execution.ErrorType
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.ControllerAdvice
+import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.context.request.WebRequest
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
+import shared.config.translate
+import shared.helpers.Regexp
+import shared.i18n.Messages
 import java.util.concurrent.CompletableFuture
 
+
+@ControllerAdvice
+class GlobalExceptionHandler(val i18n: MessageSource): ResponseEntityExceptionHandler() {
+	@ExceptionHandler(CustomException::class)
+	fun handleException(
+		ex: CustomException
+	): ResponseEntity<Any> {
+		val body: Map<String, String> = mapOf("message" to i18n.translate(ex.message, *ex.args))
+
+		return ResponseEntity(body, HttpStatus.valueOf(ex.type.name))
+	}
+}
 
 class CustomDataFetcherExceptionHandler(private val i18n: MessageSource) : DataFetcherExceptionHandler {
 	override fun handleException(handlerParameters: DataFetcherExceptionHandlerParameters): CompletableFuture<DataFetcherExceptionHandlerResult> {

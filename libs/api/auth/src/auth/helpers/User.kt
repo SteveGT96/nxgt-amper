@@ -1,6 +1,6 @@
 package auth.helpers
 
-import auth.models.*
+import auth.entities.*
 import shared.helpers.`is`
 import shared.helpers.query
 import kotlinx.coroutines.delay

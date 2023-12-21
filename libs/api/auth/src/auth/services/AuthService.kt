@@ -1,9 +1,9 @@
 package auth.services
 
-import auth.dto.LoginInput
+import auth.dtos.LoginInput
 import auth.helpers.UserDataSource
 import auth.helpers.*
-import auth.models.Token
+import auth.entities.Token
 import auth.types.CustomUserDetails
 import shared.exceptions.CustomException
 import shared.i18n.Messages

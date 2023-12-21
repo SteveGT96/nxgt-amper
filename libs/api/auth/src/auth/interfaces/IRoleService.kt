@@ -1,7 +1,7 @@
 package auth.interfaces
 
-import auth.dto.*
-import auth.models.Role
+import auth.dtos.*
+import auth.entities.Role
 
 interface IRoleService {
 

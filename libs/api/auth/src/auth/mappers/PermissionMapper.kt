@@ -1,7 +1,7 @@
 package auth.mappers
 
-import auth.dto.*
-import auth.models.Permission
+import auth.dtos.*
+import auth.entities.Permission
 import shared.exceptions.CustomException
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.findById

@@ -1,10 +1,10 @@
 package auth.services
 
-import auth.dto.*
+import auth.dtos.*
 import auth.interfaces.IUserService
 import auth.mappers.UserMapper
-import auth.models.Group
-import auth.models.User
+import auth.entities.Group
+import auth.entities.User
 import auth.repositories.UserRepository
 import auth.types.CustomUserDetails
 import shared.exceptions.CustomException

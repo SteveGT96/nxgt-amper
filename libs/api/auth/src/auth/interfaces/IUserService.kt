@@ -1,7 +1,7 @@
 package auth.interfaces
 
-import auth.dto.*
-import auth.models.User
+import auth.dtos.*
+import auth.entities.User
 
 interface IUserService {
 	suspend fun findAll(): List<User>

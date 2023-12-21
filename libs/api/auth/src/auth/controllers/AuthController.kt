@@ -1,9 +1,9 @@
 package auth.controllers
 
-import auth.dto.LoginInput
+import auth.dtos.LoginInput
 import auth.helpers.currentUser
 import auth.helpers.requiredValue
-import auth.models.Token
+import auth.entities.Token
 import auth.services.AuthService
 import org.springframework.graphql.data.method.annotation.Argument
 import org.springframework.graphql.data.method.annotation.MutationMapping

@@ -1,7 +1,7 @@
 package auth.interfaces
 
-import auth.dto.*
-import auth.models.Permission
+import auth.dtos.*
+import auth.entities.Permission
 
 interface IPermissionService {
 

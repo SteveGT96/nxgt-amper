@@ -1,9 +1,9 @@
 package auth.services
 
-import auth.dto.*
+import auth.dtos.*
 import auth.interfaces.IGroupService
 import auth.mappers.GroupMapper
-import auth.models.Group
+import auth.entities.Group
 import auth.repositories.GroupRepository
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.data.mongodb.core.MongoTemplate

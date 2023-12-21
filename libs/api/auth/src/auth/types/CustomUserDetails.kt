@@ -1,7 +1,7 @@
 package auth.types
 
-import auth.models.Group
-import auth.models.User
+import auth.entities.Group
+import auth.entities.User
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails

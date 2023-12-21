@@ -1,4 +1,4 @@
-package auth.dto
+package auth.dtos
 
 import shared.helpers.Regexp
 import jakarta.validation.constraints.Pattern

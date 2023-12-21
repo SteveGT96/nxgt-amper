@@ -1,4 +1,4 @@
-package auth.models
+package auth.entities
 
 import shared.types.AuditMetadata
 import org.springframework.data.annotation.TypeAlias

@@ -1,9 +1,9 @@
 package auth.services
 
-import auth.dto.*
+import auth.dtos.*
 import auth.interfaces.IRoleService
 import auth.mappers.RoleMapper
-import auth.models.Role
+import auth.entities.Role
 import auth.repositories.RoleRepository
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.data.mongodb.core.MongoTemplate

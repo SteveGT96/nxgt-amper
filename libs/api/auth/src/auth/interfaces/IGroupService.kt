@@ -1,7 +1,7 @@
 package auth.interfaces
 
-import auth.dto.*
-import auth.models.Group
+import auth.dtos.*
+import auth.entities.Group
 
 interface IGroupService {
 	suspend fun findAll(): List<Group>
